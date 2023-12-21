@@ -1,0 +1,58 @@
+
+nor_cmds = {
+    'RD_DID'                      : 0x9F,  
+    'RD_MDID'                     : 0xAF, 
+    'RD_STA_REG'                  : 0x05,  
+    'WR_STA_REG'                  : 0x01,
+    'RD_VOL_CFG'                  : 0x85,  
+    'RD_EVOL_REG'                 : 0x65,  
+    'RD_NONVOL_CFG'               : 0xB5,  
+    'RD_LOCK_REG'                 : 0xE8,  
+    'RD_EADDR_REG'                : 0xC8,  
+    'WR_EADDR_REG'                : 0xC5,  
+    'RD_FLAG_REG'                 : 0x70,  
+    'CLR_FLAG_REG'                : 0x50,  
+
+    'RD'                          : 0x03,  
+    'FAST_RD'                     : 0x0B,  
+    'DUAL_O_FAST_RD'              : 0x3B,  
+    'DUAL_IO_FAST_RD'             : 0xBB,  
+    'QUAD_O_FAST_RD'              : 0x6B,  
+    'QUAD_IO_FAST_RD'             : 0xEB,  
+
+    'RD_4B'                       : 0x13,  
+    'FAST_RD_4B'                  : 0x0C,  
+    'DUAL_O_FAST_RD_4B'           : 0x3C,  
+    'DUAL_IO_FAST_RD_4B'          : 0xBC,  
+    'QUAD_O_FAST_RD_4B'           : 0x6C,  
+    'QUAD_IO_FAST_RD_4B'          : 0xEC,  
+
+    'WR_EN'                       : 0x06,  
+    'WR_DIS'                      : 0x04,  
+    'WR_NONVOL_CFG'               : 0xB1,  
+
+    'PAGE_PROG'                   : 0x02,  
+    'DUAL_I_FAST_PROG'            : 0xA2,  
+    'EXT_DUAL_I_FAST_PROG'        : 0xD2,  
+    'QUAD_I_FAST_PROG'            : 0x32,  
+    'EXT_QUAD_I_FAST_PROG'        : 0x38,  
+    'PAGE_PROG_4B'                : 0x12,  
+    'QUAD_I_FAST_PROG_4B'         : 0x34,
+    'EXT_QUAD_I_FAST_PROG_4B'     : 0x3E,  
+
+    'BULK_ERASE'                  : 0xC7,  
+    'ERASE_SUSP'                  : 0x75,  
+    'ERASE_RESU'                  : 0x7A,  
+    'SECT_ERASE'                  : 0xD8,  
+    'SECT_ERASE_4B'               : 0xDC,  
+    'SUBSECT_ERASE_4KB'           : 0x20,  
+    'SUBSECT_ERASE_4KB_4B'        : 0x21,  
+
+    'EN_4B_ADDR'                  : 0xB7,  
+    'EXIT_4B_ADDR'                : 0xE9,  
+
+    'RESET_ENABLE'                : 0x66,  
+    'RESET_MEMORY'                : 0x99,  
+    'ENTER_QUAD'                  : 0x35,  
+    'EXIT_QUAD'                   : 0xF5,  
+}

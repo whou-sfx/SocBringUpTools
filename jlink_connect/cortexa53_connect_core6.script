@@ -1,0 +1,88 @@
+/*********************************************************************
+*            (c) 1995 - 2019 SEGGER Microcontroller GmbH             *
+*                        The Embedded Experts                        *
+*                           www.segger.com                           *
+**********************************************************************
+
+-------------------------- END-OF-HEADER -----------------------------
+
+File    : Template_ConfigTargetSettings.JLinkScript
+Purpose : PCode template for NXP S32V234 Cortex-A53_3 core.
+
+Additional information:
+  Template to specify target settings. 
+*/
+
+/*********************************************************************
+*
+*       Constants (similar to defines)
+*
+**********************************************************************
+*/
+//
+// Device specific
+// See header of this file for explanation of AP map, CoreSight addresses etc.
+// Here we specify to which core we want to connect, using which AP
+//
+__constant U32 _INDEX_APB_AP_CORTEX_A            = 0;             // Index of AP that identifies the APB-AP that is connected to the Cortex-A cores
+__constant U32 _APB_ADDR_DBGREGS_A53_0           = 0x80410000;
+__constant U32 _APB_ADDR_DBGREGS_A53_1           = 0x80510000;
+__constant U32 _APB_ADDR_DBGREGS_A53_2           = 0x80610000;
+__constant U32 _APB_ADDR_DBGREGS_A53_3           = 0x80710000;
+__constant U32 _APB_ADDR_DBGREGS_A53_4           = 0x80810000;
+__constant U32 _APB_ADDR_DBGREGS_A53_5           = 0x80910000;
+__constant U32 _APB_ADDR_DBGREGS_A53_6           = 0x80a10000;
+__constant U32 _APB_ADDR_DBGREGS_A53_7           = 0x80b10000;
+
+//
+// USER CONFIGURABLE
+//
+U32 _Index_APCore = _INDEX_APB_AP_CORTEX_A;
+// Change the offset here
+U32 _Addr_DBGREGS = _APB_ADDR_DBGREGS_A53_6;
+// Choose appropriate CTI
+// const char* _sExecCTIBaseAddr = "CORESIGHT_SetCSCTICoreBaseAddr=_CTI_BASE_ADDR_A53_2";      
+
+/*********************************************************************
+*
+*       Global functions
+*
+**********************************************************************
+*/
+
+/*********************************************************************
+*
+*       ConfigTargetSettings()
+*
+*  Function description
+*    Called before InitTarget(). Mainly used to set some global DLL variables to customize the normal connect procedure.
+*    For ARM CoreSight devices this may be specifying the base address of some CoreSight components (ETM, ...)
+*    that cannot be automatically detected by J-Link due to erroneous ROM tables etc.
+*    May also be used to specify the device name in case debugger does not pass it to the DLL.
+*
+*  Return value
+*    >= 0  O.K.
+*     < 0  Error
+*
+*  Notes
+*    (1) May not, under absolutely NO circumstances, call any API functions that perform target communication.
+*    (2) Should only set some global DLL variables
+*/
+int ConfigTargetSettings(void) {
+  //
+  // Access Port map specfication
+  // Core type
+  // Access Port to use 
+  // Specify core base address 
+  // Specify CTI base address  
+  //
+  JLINK_CORESIGHT_AddAP(0, CORESIGHT_APB_AP);       
+  //JLINK_CORESIGHT_AddAP(1, CORESIGHT_AXI_AP);       
+  JLINK_CPU                       = CORTEX_A53;               
+  JLINK_CORESIGHT_IndexAPBAPToUse = _Index_APCore;            // AP used as debug interface between J-Link and core to be debugged
+  //JLINK_CORESIGHT_IndexAXIAPToUse = 1;            // AP used as debug interface between J-Link and core to be debugged
+  JLINK_CORESIGHT_CoreBaseAddr    = _Addr_DBGREGS;            // Specify Coresight Core Debug Register address to use. 
+  //JLINK_ExecCommand(_sExecCTIBaseAddr);                       // Specify CoreSight CTI address to use.
+  return 0;
+}
+/*************************** end of file ****************************/

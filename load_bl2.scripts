@@ -1,0 +1,5 @@
+h
+loadfile /home/tcn/whou/bl2.bin 0x7fe00000
+setpc 0x7fe00000
+g
+exit
